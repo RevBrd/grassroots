@@ -246,13 +246,13 @@ var Engine = (function(){
     sub: 'SideProject',
     hook: ''
   };
-  var SUBS = ['SideProject','Entrepreneur','SaaS','startups','productivity','ChatGPT','cscareerquestions','selfimprovement','smallbusiness','webdev'];
+  var SUBS = ['SideProject','Entrepreneur','SaaS','startups','productivity','ChatGPT','cscareerquestions','selfimprovement','smallbusiness','webdev','vibecoding'];
   // Detectability points per tell. Positive = readers notice. Tune here.
   var POINTS = {
     titleName: 22, extraMention: 7, pivotBlatant: 18, pivotMedium: 11, pivotSly: 6,
     notAnAd: 14, irony: 15, nobodyAsked: 14, sockpuppet: 16, noAffil: 12, posingAsUser: 9,
     price: 9, code: 10, tldr: 8, milestone: 7, trauma: 6, competitors: 8, profile: 5,
-    agehours: 20, agedays: 14, agemonths: 5, agebought: 9, typo: -6, edits: 4
+    agehours: 20, agedays: 14, agemonths: 5, agebought: 9, typo: -6, edits: 4, dialect: -5
   };
 
   // ---- rng ----
@@ -457,6 +457,67 @@ var Engine = (function(){
   var RIVAL_B = ['ly','ify','hub','r','io','stack','base','ster','loop','OS'];
   function rivalName(r){ return pick(r, RIVAL_A)+pick(r, RIVAL_B); }
 
+
+  // Per-subreddit flavour. One local-dialect paragraph goes into the body, and the sub's own regulars
+  // show up in the comments. Speaking the dialect lowers Detectability a little ("dialect" in POINTS).
+  var FLAVOUR = {
+    SideProject: {
+      paras: ["Built the first version over a weekend. Tech stack, since someone always asks: Next.js, Supabase, Stripe, and an amount of coffee I'm not going to disclose.", "I know, I know, another side project. But hear me out."],
+      skeptic: ["Cool, but who is this actually for?", "The landing page has a waitlist for the waitlist.", "What's the stack? Never mind, it's in paragraph two."],
+      alt: ["Love the landing page. What did you use for the gradients?", "Shipping is the hardest part. Congrats on shipping!"]
+    },
+    Entrepreneur: {
+      paras: ["I used to work for someone else's dream. Now I work 80 hours a week for my own, and honestly? Worth it.", "Day 1 vs Day {days}: same laptop, completely different person."],
+      skeptic: ["Every post on this sub is a funnel now.", "Step 1: have a breakdown. Step 2: monetise the breakdown.", "Day 1 vs Day {days} and the product is still in paragraph six."],
+      alt: ["This is the mindset. Saving this.", "Needed this today. Back to work."]
+    },
+    SaaS: {
+      paras: ["Quick numbers for the people who care: churn is under 4%, and CAC is basically zero because I do all the marketing myself. (Like this post, ironically.)", "ICP is still evolving, but we're seeing strong PLG signals."],
+      skeptic: ["What's your churn though? Real churn.", "\"CAC is basically zero\" is doing a lot of work in this post.", "Strong PLG signals = three signups from your cousin."],
+      alt: ["Your churn numbers are insane for this stage. What's your onboarding like?", "Bookmarking for when I hit this stage."]
+    },
+    startups: {
+      paras: ["We applied to YC twice. Got rejected twice. Honestly the best thing that could have happened to us.", "We're pre-seed, pre-revenue, and post-burnout, which I'm told is the normal order."],
+      skeptic: ["Did YC reject you, or did you not apply?", "Pre-seed, pre-revenue, pre-product, and post-pitch.", "Who's on the cap table? Is it just your alts?"],
+      alt: ["YC's loss. Seriously.", "Rooting for you. Are you raising?"]
+    },
+    productivity: {
+      paras: ["For context, I wake up at 5am, I journal, and I have a second brain in Notion with 400 pages in it. None of it fixed {problem}.", "I've read every productivity book. Atomic Habits twice. The 4-Hour Workweek four times, which took me about sixteen hours."],
+      skeptic: ["You spent more time building the system than doing the work.", "Your second brain has 400 pages and your first brain wrote this.", "Productivity tip: close this tab."],
+      alt: ["Okay, this is going in my second brain.", "Literally just added this to my morning routine."]
+    },
+    ChatGPT: {
+      paras: ["I asked ChatGPT about {problem} and it gave me a twelve-step plan. I did step one and then asked it for a shorter plan.", "My prompt game is honestly pretty good. I've been doing this since before it was cool."],
+      skeptic: ["This post was also written by ChatGPT.", "The em dashes are a nice touch.", "Ask it to write the comments too. Oh wait."],
+      alt: ["Okay, what's the prompt though?", "This is so underrated. Why is nobody talking about this?"]
+    },
+    cscareerquestions: {
+      paras: ["Some background: I've applied to 400 jobs this year. Leetcode streak of 212 days. The market is cooked, and so am I.", "Got to the final round twice this month. Ghosted both times."],
+      skeptic: ["How does this get anyone a job?", "Wrong sub. Nobody here can afford {price}.", "400 applications and you found time to build a SaaS?"],
+      alt: ["Same situation. This gives me hope honestly.", "The market is so cooked. Signing up."]
+    },
+    selfimprovement: {
+      paras: ["I'm on day 41 of a dopamine detox. Cold showers, no sugar, phone in a drawer. It's the only reason I had the clarity to write this.", "Everything changed when I started journaling. Every morning, three pages, by hand."],
+      skeptic: ["Day 41 of the detox and you've found something to sell.", "Cold showers, no sugar, and a $5/month subscription.", "Journaling would have kept this post private."],
+      alt: ["This is the sign I needed today.", "Screenshotting this for my vision board."]
+    },
+    smallbusiness: {
+      paras: ["I run a small bakery with my wife. She does the books, I do everything else, including apparently software now.", "Margins are thin, hours are long, and every vendor wants a monthly subscription."],
+      skeptic: ["Small business owners do not have time to read this post.", "Every vendor wants a monthly subscription, says man selling a monthly subscription.", "How's the bakery doing? Is there a bakery?"],
+      alt: ["As a small business owner, this is exactly what we need.", "Sending this to my wife right now."]
+    },
+    webdev: {
+      paras: ["Built with vanilla JS, by the way. No frameworks. I know what I'm doing.", "Yes, I know, another one. But I actually rolled my own auth this time."],
+      skeptic: ["Lighthouse score?", "You rolled your own auth and you're asking people to sign up?", "The cookie banner covers the whole page on mobile."],
+      alt: ["Clean UI. What are you using for the components?", "Vanilla JS in 2026, respect."]
+    },
+    vibecoding: {
+      paras: ["Full transparency: I don't know how to code. I built this entire thing in a weekend by typing \"continue\" about 340 times.", "Zero lines written by me. I told the AI to make no mistakes, and it mostly listened."],
+      skeptic: ["Did you read the diff?", "Who maintains this when the context window runs out?", "\"It mostly listened\" is going to age beautifully.", "Your API key is in the page source, by the way."],
+      alt: ["Wait, you vibe coded this? What model?", "This is the future. Devs are cooked."]
+    }
+  };
+
   var AGES = { hours:'3h', days:'2d', months:'11mo', bought:'9y' };
 
   function norm(input){
@@ -487,13 +548,19 @@ var Engine = (function(){
     var r = mulberry32(seed >>> 0);
     if(!hookGiven) c.hook = pick(r, HOOKS);
     c.n = int(r, 3, 7); c.k = int(r, 4, 6); c.year = 2026;
-    c.months = int(r, 4, 18); c.mrr = '$' + (int(r, 8, 96)*100).toLocaleString('en-US');
+    c.months = int(r, 4, 18); c.days = int(r, 200, 500); c.mrr = '$' + (int(r, 8, 96)*100).toLocaleString('en-US');
     c.priceLine = fill(pick(r, PRICE), c);
     var F = FORMATS[c.format];
     var P = { title:'', blocks:[], tags:[], voice:'founder', opener: pick(r, OPENERS[c.vt]), comments:[], bio:'' };
     var u = c.age === 'hours' ? 'throwaway_' + int(r, 10000, 99999) : user(r);
     P.user = u;
     F.build(c, r, P);
+    var FL = FLAVOUR[c.sub];
+    if(FL){
+      var at = 2; for(var bi = 0; bi < P.blocks.length; bi++){ if(P.blocks[bi].t === 'ol'){ at = Math.min(at, bi); break; } }
+      P.blocks.splice(Math.min(at, P.blocks.length), 0, {t:'p', s: fill(pick(r, FL.paras), c), flavour:true});
+      P.tags.push('dialect');
+    }
     var pitchIndex = -1;
     var inline = P.tags.indexOf('inlinePitch') >= 0;
 
@@ -593,7 +660,8 @@ var Engine = (function(){
     agemonths: 'Account is 11 months old with no history. First post is this',
     agebought: '9-year-old account whose post history starts today',
     typo: 'A typo. Very human',
-    edits: 'Thanks people for engagement that hasn\'t happened yet'
+    edits: 'Thanks people for engagement that hasn\'t happened yet',
+    dialect: 'Speaks the local dialect. It helps a little'
   };
 
   function analyse(P, c, seed){
@@ -637,12 +705,17 @@ var Engine = (function(){
       out.push({user:P.user, op:true, reply:true, score:int(r,-6,-1), text: P.voice==='user' ? 'Oh wow, I hadn\'t heard of this! Checking it out now.' : fill('Yep, that\'s the one I ended up using! {priceLine}', c)});
     }
     var nAlt = 1 + (det < 60 ? 1 : 0);
-    pickN(r, ALT, nAlt).forEach(function(t){
+    var FLc = FLAVOUR[c.sub];
+    var alts = pickN(r, ALT, nAlt);
+    if(FLc && r() < 0.6) alts[0] = pick(r, FLc.alt);
+    alts.forEach(function(t){
       out.push({user:user(r), alt:true, score:int(r,1,3), text: fill(t, c)});
       if(r() < 0.6) out.push({user:P.user, op:true, reply:true, score:int(r,-4,1), text: pick(r, OPREPLY)});
     });
     var nSk = 1 + Math.floor(det/35);                  // the internet always notices; at least one
-    pickN(r, SKEPTIC, nSk).forEach(function(t, i){ out.push({user:user(r), skeptic:true, score: Math.round(40 + det*3 - i*25 + int(r,0,20)), text:t}); });
+    var sks = pickN(r, SKEPTIC, nSk);
+    if(FLc && r() < 0.75) sks[0] = fill(pick(r, FLc.skeptic), c);
+    sks.forEach(function(t, i){ out.push({user:user(r), skeptic:true, score: Math.round(40 + det*3 - i*25 + int(r,0,20)), text:t}); });
     if(r() < 0.7) out.push({user:user(r), score:int(r,2,12), text: pick(r, NEUTRAL)});
     // sort top-level by score, keeping each reply under the comment before it
     var threads = [];
@@ -660,7 +733,7 @@ var Engine = (function(){
     return P.title + '\n\n' + lines.join('\n\n');
   }
 
-  return { generate: generate, toMarkdown: toMarkdown, hash: hash, FORMATS: FORMATS, SUBS: SUBS, DEFAULTS: DEFAULTS, POINTS: POINTS, TELLS: TELLS, fill: fill, textOf: textOf, countOf: countOf };
+  return { FLAVOUR: FLAVOUR, generate: generate, toMarkdown: toMarkdown, hash: hash, FORMATS: FORMATS, SUBS: SUBS, DEFAULTS: DEFAULTS, POINTS: POINTS, TELLS: TELLS, fill: fill, textOf: textOf, countOf: countOf };
 })();
 // ===================== END ENGINE =====================
 
