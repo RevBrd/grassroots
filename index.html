@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grassroots</title>
+<meta name="description" content="Organic reach. Grown in a lab. Grassroots turns your ad into a story about the worst day of your life, then mentions your SaaS in paragraph four.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grassroots">
+<meta property="og:title" content="Grassroots: organic reach, grown in a lab">
+<meta property="og:description" content="The algorithm hates ads. It loves stories. So we turn your ad into a story.">
+<meta property="og:url" content="https://revbrd.github.io/grassroots/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#3b7a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 29V15' stroke='%231f2a1d' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M16 17c0-6 4-10 11-10 0 7-4 11-11 10z' fill='%233b7a35'/%3E%3Cpath d='M16 21c0-5-3-8-9-8 0 5 3 8 9 8z' fill='%236fbf5f'/%3E%3Cpath d='M5 29h22' stroke='%231f2a1d' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5efe0; --panel:#fffaf0; --ink:#1f2a1d; --muted:#6b705f; --line:#ddd3bb;
+  --grass:#3b7a35; --grass-2:#2c5e27; --sun:#e5b22a; --red:#b8442f;
+  --card:#ffffff; --card-ink:#1a1a1b; --card-muted:#787c7e; --card-line:#e3e3e3;
+  --shadow:0 1px 0 #00000010, 0 8px 24px -12px #3b4a2a40;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141912; --panel:#1b2219; --ink:#e9eadf; --muted:#9aa08c; --line:#2e3829;
+    --grass:#6fbf5f; --grass-2:#8fd57f; --sun:#e9be45; --red:#e0735c;
+    --card:#1a1a1b; --card-ink:#d7dadc; --card-muted:#818384; --card-line:#343536;
+    --shadow:0 1px 0 #00000040, 0 8px 24px -12px #00000080;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141912; --panel:#1b2219; --ink:#e9eadf; --muted:#9aa08c; --line:#2e3829;
+  --grass:#6fbf5f; --grass-2:#8fd57f; --sun:#e9be45; --red:#e0735c;
+  --card:#1a1a1b; --card-ink:#d7dadc; --card-muted:#818384; --card-line:#343536;
+  --shadow:0 1px 0 #00000040, 0 8px 24px -12px #00000080;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font:800 22px/1 Fraunces,Georgia,serif;letter-spacing:-.01em}
+.brand svg{width:28px;height:28px}
+.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
+.hero{padding:28px 0 22px}
+.hero h1{font:800 clamp(34px,6vw,62px)/1.02 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0 0 14px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--grass)}
+.hero p.sub{font-size:18px;color:var(--muted);max-width:56ch;margin:0 0 18px}
+.seen{font:500 12px/1.6 "JetBrains Mono",monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.seen s{opacity:.8}
+.grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:22px;padding:10px 0 40px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.panel h2{font:800 18px/1.2 Fraunces,Georgia,serif;margin:0 0 4px}
+.panel .hint{color:var(--muted);font-size:13px;margin:0 0 14px}
+label.f{display:block;margin:0 0 12px}
+label.f>span{display:block;font-weight:600;font-size:13px;margin-bottom:4px}
+label.f>small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+input[type=text],select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:14px Inter,sans-serif}
+input[type=text]:focus,select:focus{outline:2px solid var(--grass);outline-offset:1px}
+input[type=range]{width:100%;accent-color:var(--grass)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:13px;margin:4px 0 14px}
+.check input{margin-top:3px;accent-color:var(--grass)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+button.b{border:0;border-radius:9px;padding:10px 14px;font:600 14px Inter,sans-serif;cursor:pointer;background:var(--grass);color:#fff}
+button.b:hover{background:var(--grass-2)}
+button.b.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button.b.ghost:hover{border-color:var(--grass)}
+.out{display:flex;flex-direction:column;gap:16px;min-width:0}
+/* the post card: a generic forum card, not anyone's actual site */
+.card{background:var(--card);color:var(--card-ink);border:1px solid var(--card-line);border-radius:10px;display:flex;overflow:hidden;font-family:Inter,"Noto Sans",Arial,sans-serif}
+.votes{width:44px;flex:none;display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:2px;color:var(--card-muted);font:700 12px Inter,sans-serif}
+.votes i{font-style:normal;font-size:16px;line-height:1}
+.post{padding:10px 14px 12px 4px;min-width:0;flex:1}
+.meta{font-size:12px;color:var(--card-muted);margin-bottom:4px;overflow-wrap:anywhere}
+.meta b{color:var(--card-ink)}
+.post h3{font:600 19px/1.3 Inter,sans-serif;margin:2px 0 10px;overflow-wrap:anywhere}
+.body p{margin:0 0 10px;overflow-wrap:anywhere}
+.body ol{margin:0 0 10px;padding-left:22px}
+.body li{margin:0 0 8px}
+.body .edit{font-style:italic}
+.body mark{background:#e5b22a55;color:inherit;border-radius:3px;padding:0 2px}
+.actions{display:flex;gap:16px;font-size:12px;font-weight:600;color:var(--card-muted);margin-top:6px}
+.bio{font-size:12px;color:var(--card-muted);border-top:1px dashed var(--card-line);margin-top:10px;padding-top:8px}
+.comments{background:var(--card);color:var(--card-ink);border:1px solid var(--card-line);border-radius:10px;padding:12px 14px}
+.comments h4,.report h4{margin:0 0 10px;font:700 13px Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--card-muted)}
+.cm{padding:6px 0 8px 10px;border-left:2px solid var(--card-line);margin:0 0 6px}
+.cm.reply{margin-left:22px}
+.cm .who{font-size:12px;color:var(--card-muted)}
+.cm .who b{color:var(--card-ink)}
+.cm .txt{font-size:14px;margin-top:2px;overflow-wrap:anywhere}
+.tag{display:inline-block;font:700 10px/1 Inter,sans-serif;padding:3px 5px;border-radius:4px;margin-left:4px;vertical-align:1px}
+.tag.op{background:#0079d3;color:#fff}
+.tag.alt{background:var(--sun);color:#1f1a05}
+.cm.alt-hidden .tag.alt{display:none}
+.report{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.meters{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+@media (max-width:520px){.meters{grid-template-columns:1fr}}
+.meter .lab{font-size:12px;color:var(--muted);font-weight:600}
+.meter .num{font:800 38px/1 Fraunces,Georgia,serif}
+.meter .num small{font-size:16px}
+.meter .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+.meter .bar>div{height:100%;background:var(--grass);border-radius:99px;transition:width .4s}
+.meter.honest .bar>div{background:var(--red)}
+.meter .fine{font-size:11px;color:var(--muted);margin-top:4px}
+.verdict{font:600 15px/1.4 Inter,sans-serif;margin:4px 0 12px;padding:10px 12px;border-radius:8px;background:color-mix(in srgb,var(--grass) 12%,transparent)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:12px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.stat .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.stat .v{font:600 15px "JetBrains Mono",monospace}
+ul.tells{list-style:none;margin:0;padding:0;font-size:13px}
+ul.tells li{display:flex;gap:10px;padding:5px 0;border-top:1px solid var(--line)}
+ul.tells li .pts{font:600 12px "JetBrains Mono",monospace;width:38px;flex:none;text-align:right;color:var(--red)}
+ul.tells li .pts.neg{color:var(--grass)}
+.seed{font:12px "JetBrains Mono",monospace;color:var(--muted)}
+.testi{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;padding:6px 0 30px}
+.testi blockquote{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px}
+.testi cite{display:block;margin-top:8px;font-style:normal;color:var(--muted);font-size:12px}
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--muted);font-size:13px}
+footer p{margin:0 0 6px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;opacity:0;transition:.25s;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29V15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 17c0-6 4-10 11-10 0 7-4 11-11 10z" fill="#3b7a35"/><path d="M16 21c0-5-3-8-9-8 0 5 3 8 9 8z" fill="#6fbf5f"/><path d="M5 29h22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      Grassroots
+    </div>
+    <button class="theme" id="themeBtn">Theme: auto</button>
+  </header>
+
+  <section class="hero">
+    <h1>Organic reach. <em>Grown in a lab.</em></h1>
+    <p class="sub">The algorithm hates ads. It loves stories. So we turn your ad into a story about the worst day of your life, then mention your SaaS in paragraph four.</p>
+    <div class="seen">As seen on &nbsp;r/SideProject <s>(removed)</s> · r/Entrepreneur <s>(removed)</s> · r/SaaS <s>(removed by moderators)</s> · r/productivity <s>(shadowbanned)</s></div>
+  </section>
+
+  <div class="grid">
+    <form class="panel" id="form" autocomplete="off" onsubmit="return false">
+      <h2>Your product</h2>
+      <p class="hint">Tell us what you're selling. We'll make sure nobody can tell. (They can tell.)</p>
+      <label class="f"><span>Product name</span><input type="text" id="name" maxlength="40" placeholder="Advisr"></label>
+      <label class="f"><span>What it does</span><input type="text" id="does" maxlength="90" placeholder="pairs people with someone who actually has advice"><small>Finish the sentence "It ___."</small></label>
+      <label class="f"><span>The problem it solves</span><input type="text" id="problem" maxlength="70" placeholder="finding genuine advice online"><small>Finish "I struggled with ___." An -ing phrase works best.</small></label>
+      <div class="row2">
+        <label class="f"><span>Price</span><input type="text" id="price" maxlength="30" placeholder="$5/month"></label>
+        <label class="f"><span>Subreddit</span><select id="sub"></select></label>
+      </div>
+      <label class="f"><span>Your story</span><input type="text" id="hook" maxlength="80" placeholder="getting laughed out of a coding interview"><small>Finish "5 things I learned ___." Leave blank and we'll pick a trauma for you.</small></label>
+
+      <h2 style="margin-top:18px">The post</h2>
+      <p class="hint">Proven formats. Proven by us, on a dashboard you can't see.</p>
+      <label class="f"><span>Format</span><select id="format"></select></label>
+      <label class="f"><span>Where the product goes</span><select id="place"></select><small id="placeNote"></small></label>
+      <div class="row2">
+        <label class="f"><span>Vulnerability</span><input type="range" id="vuln" min="0" max="100" value="55"><div class="sl"><span>LinkedIn</span><span>Therapy</span></div></label>
+        <label class="f"><span>Subtlety</span><input type="range" id="subtle" min="0" max="100" value="45"><div class="sl"><span>Billboard</span><span>Spy</span></div></label>
+      </div>
+      <label class="f"><span>Account age</span><select id="age">
+        <option value="hours">3 hours (throwaway)</option>
+        <option value="days" selected>2 days</option>
+        <option value="months">11 months, never posted</option>
+        <option value="bought">9 years (bought it)</option>
+      </select></label>
+      <label class="check"><input type="checkbox" id="typo"><span>Add one human typo for authenticity <small style="color:var(--muted)">· Mistakes by <a href="https://revbrd.github.io/maas/" target="_blank" rel="noopener" style="color:inherit">MaaS™</a>, a Grassroots partner</small></span></label>
+      <div class="btns">
+        <button class="b" id="go" type="button">Grow my post</button>
+        <button class="b ghost" id="reroll" type="button">Reroll</button>
+        <button class="b ghost" id="example" type="button">Load an example</button>
+        <button class="b ghost" id="dogfood" type="button">Dogfood</button>
+      </div>
+    </form>
+
+    <div class="out" id="out">
+      <div class="card" id="card">
+        <div class="votes"><i>▲</i><span id="votes">1</span><i>▼</i></div>
+        <div class="post">
+          <div class="meta" id="meta"></div>
+          <h3 id="title"></h3>
+          <div class="body" id="body"></div>
+          <div class="bio" id="bio" hidden></div>
+          <div class="actions"><span id="ccount">0 Comments</span><span>Share</span><span>Save</span></div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="b" id="copy" type="button">Copy post</button>
+        <button class="b ghost" id="copyC" type="button">Copy alt comments</button>
+        <button class="b ghost" id="hl" type="button">Highlight the pitch</button>
+        <button class="b ghost" id="reveal" type="button">Reveal my alts</button>
+        <span class="seed" id="seed" style="align-self:center"></span>
+      </div>
+
+      <div class="report">
+        <h4>Authenticity report</h4>
+        <div class="meters">
+          <div class="meter"><div class="lab">Authenticity™</div><div class="num" id="auth">—</div><div class="bar"><div id="authBar" style="width:0"></div></div><div class="fine">Our proprietary metric.</div></div>
+          <div class="meter honest"><div class="lab">Detectability</div><div class="num" id="det">—</div><div class="bar"><div id="detBar" style="width:0"></div></div><div class="fine">What readers will actually think.</div></div>
+        </div>
+        <div class="verdict" id="verdict"></div>
+        <div class="stats">
+          <div class="stat"><div class="k">First "nice ad"</div><div class="v" id="niceAd">—</div></div>
+          <div class="stat"><div class="k">Mod removal</div><div class="v" id="removal">—</div></div>
+          <div class="stat"><div class="k">Product mentions</div><div class="v" id="mentions">—</div></div>
+          <div class="stat"><div class="k">Pitch starts at</div><div class="v" id="pitchAt">—</div></div>
+        </div>
+        <ul class="tells" id="tells"></ul>
+      </div>
+
+      <div class="comments" id="comments"><h4>Comments</h4><div id="clist"></div></div>
+    </div>
+  </div>
+
+  <section class="testi">
+    <blockquote>"I posted a heartfelt story about my grandfather's watch and got eleven signups. I don't have a grandfather."<cite>— founder, productivity app, 2 days old</cite></blockquote>
+    <blockquote>"Grassroots got my post to the front page in under an hour. It got removed in under two. Both are records."<cite>— solo dev, r/SideProject (banned)</cite></blockquote>
+    <blockquote>"Before Grassroots, I just posted the link. Now I post a link with feelings in front of it."<cite>— growth lead, three-person startup, two of them alts</cite></blockquote>
+  </section>
+
+  <footer>
+    <p><b>Grassroots does not post anything for you.</b> Copying it somewhere is still your decision, and so is what happens next.</p>
+    <p>Not affiliated with any website where people talk to each other. Everything runs in your browser; nothing you type leaves this page.</p>
+    <p>Grassroots got its first 10,000 users from a Grassroots post. Press Dogfood to read it.</p>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===================== ENGINE =====================
+// DOM-free. selftest.js slices this section out by its banners and runs it under Node.
+// Everything the generator says is drawn from the pools below; nothing is hand-written per input.
+var Engine = (function(){
+
+  // ---- tunables ----
+  var DEFAULTS = {
+    name: 'Advisr',
+    does: 'pairs people with someone who actually has advice',
+    problem: 'finding genuine advice online',
+    price: '$5/month',
+    sub: 'SideProject',
+    hook: ''
+  };
+  var SUBS = ['SideProject','Entrepreneur','SaaS','startups','productivity','ChatGPT','cscareerquestions','selfimprovement','smallbusiness','webdev'];
+  // Detectability points per tell. Positive = readers notice. Tune here.
+  var POINTS = {
+    titleName: 22, extraMention: 7, pivotBlatant: 18, pivotMedium: 11, pivotSly: 6,
+    notAnAd: 14, irony: 15, nobodyAsked: 14, sockpuppet: 16, noAffil: 12, posingAsUser: 9,
+    price: 9, code: 10, tldr: 8, milestone: 7, trauma: 6, competitors: 8, profile: 5,
+    agehours: 20, agedays: 14, agemonths: 5, agebought: 9, typo: -6, edits: 4
+  };
+
+  // ---- rng ----
+  function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+  function hash(s){ var h=2166136261; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; }
+  function pick(r, arr){ return arr[Math.floor(r()*arr.length)]; }
+  function pickN(r, arr, n){ var a=arr.slice(), out=[]; while(out.length<n && a.length){ out.push(a.splice(Math.floor(r()*a.length),1)[0]); } return out; }
+  function int(r, lo, hi){ return lo+Math.floor(r()*(hi-lo+1)); }
+  function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
+
+  // {key} fills from ctx; {Key} fills capitalised. Product name, sub and price are never re-cased.
+  var KEEP = {name:1, sub:1, price:1};
+  function fill(t, c){
+    return t.replace(/\{(\w+)\}/g, function(m, k){
+      var low = k.charAt(0).toLowerCase()+k.slice(1);
+      if(!(low in c)) throw new Error('template key missing: '+k+' in "'+t+'"');
+      var v = String(c[low]);
+      return (k !== low && !KEEP[low]) ? cap(v) : v;
+    });
+  }
+
+  // ---- pools ----
+  var HOOKS = ['getting laid off on my birthday','my divorce','getting laughed out of a coding interview','burning out at a FAANG job','a 14-hour shift at a job I hated','my dog\'s surgery','failing my first startup','moving back in with my parents at 34','waiting for the bus'];
+
+  var OPENERS = [ // by vulnerability tier
+    ['Long time lurker, first time poster.','Quick one, then I\'ll get out of your hair.','Not sure if this is the right sub for this, but here goes.'],
+    ['I don\'t usually post here, but something happened that I can\'t stop thinking about.','This is going to be long, sorry. I\'ve been sitting on it for a while.','Throwaway because my coworkers browse this sub.'],
+    ['I\'ve never told anyone this, so I guess I\'m telling all of you.','My hands are honestly shaking a little typing this.','I almost deleted this three times before posting it.']
+  ];
+  var FEELINGS = [ // extra vulnerability lines, sprinkled in at higher tiers
+    'I sat in my car for forty minutes afterward. I didn\'t cry. I want to be clear that I didn\'t cry. I cried a little.',
+    'My partner asked if I was okay and I said "yeah," which is what you say when you are not okay.',
+    'I remember staring at the ceiling at 3am thinking: is this it?',
+    'I\'m not proud of how long it took me to get up off the floor. Metaphorically. Also literally, once.'
+  ];
+
+  var FORMATS = {
+    listicle: { label: '"N things I learned"', places: ['body','edit','comment','profile'],
+      titles: ['{n} things I learned from {hook}','{n} lessons from {hook} that nobody talks about','What {hook} taught me about {problem}','{n} hard truths I learned from {hook} (long post)'],
+      // stories that are ongoing ("waiting for the bus") read better with "while" than "from"
+      whileTitles: ['{n} things I learned while {hook}','{n} lessons I learned while {hook} that nobody talks about','What {hook} taught me about {problem}','{n} hard truths I learned while {hook} (long post)'],
+      lessons: [
+        ['Nobody is coming to save you.','I used to think that if I kept my head down, someone would notice. Nobody noticed. Nobody was ever going to notice.'],
+        ['Rejection is redirection.','It didn\'t feel like that at the time. It felt like rejection. But looking back, it was pointing somewhere.'],
+        ['Most advice is noise.','Everyone has an opinion. Almost nobody has a system.'],
+        ['Consistency beats talent.','The people who win aren\'t the smartest ones. They\'re the ones who show up on the days they don\'t want to.'],
+        ['The people laughing at you aren\'t thinking about you.','They forgot about it by lunch. I carried it for weeks. Only one of us was wasting time.'],
+        ['Done is better than perfect.','I spent years polishing things nobody was ever going to see.'],
+        ['Your network is your net worth.','I wish I had taken this seriously ten years ago.'],
+        ['You can\'t pour from an empty cup.','I was running on four hours of sleep and calling it hustle.'],
+        ['Not everyone will get it, and that\'s okay.','You\'re not for everyone. Neither is anything worth doing.'],
+        ['Comfort is the enemy.','Every good thing in my life started with me being uncomfortable.']
+      ],
+      finals: [
+        ['Fix the system, not the symptom.','I\'d been treating {problem} like a willpower problem. It was a tools problem.'],
+        ['Use the right tools.','This one sounds boring, but it\'s the one that actually changed things. I\'d been {problem} the hard way for years.'],
+        ['Stop doing it alone.','{Problem} is hard enough without trying to brute-force it by yourself.']
+      ],
+      build: function(c, r, P){
+        P.title = fill(pick(r, /^(waiting|sitting|standing|stuck|lying) /.test(c.hook) ? this.whileTitles : this.titles), c);
+        P.blocks.push({t:'p', s: P.opener});
+        if(c.vt >= 1) P.blocks.push({t:'p', s: fill(pick(r, ['{Hook} was one of the worst days of my life. It was also one of the most educational.','Here\'s what {hook} taught me, in no particular order.','I\'ve had some time to process {hook}, and these are the things I keep coming back to.']), c)});
+        else P.blocks.push({t:'p', s: fill('Here\'s what {hook} taught me.', c)});
+        var items = pickN(r, this.lessons, c.n-1).map(function(l){ return {h:l[0], s:fill(l[1], c)}; });
+        var f = pick(r, this.finals); items.push({h:f[0], s:fill(f[1], c)});
+        if(c.vt === 2) items[int(r,0,items.length-2)].s += ' ' + pick(r, FEELINGS);
+        P.blocks.push({t:'ol', items: items});
+        P.tags.push('listicle');
+      }
+    },
+    rant: { label: 'Rant about the problem', places: ['body','edit','comment','profile'],
+      titles: ['Is it just me, or is nobody on r/{sub} genuine anymore?','{Problem} is completely broken and nobody is talking about it','Can we talk about how bad {problem} has gotten?','I\'m so tired of how hard {problem} is in {year}'],
+      paras: [
+        'Every time I try {problem}, I end up with ten tabs open, three conflicting answers, and somehow less confidence than when I started.',
+        'I remember when this sub was actually about helping each other. Now every other post is someone trying to sell something.',
+        'Am I the only one who feels this way? I genuinely can\'t be the only one.',
+        'And the worst part is that nobody seems to care. We\'ve all just accepted it.',
+        'I\'ve been thinking about this a lot, and I don\'t think it\'s a people problem. I think it\'s a tools problem.'
+      ],
+      build: function(c, r, P){
+        P.title = fill(pick(r, this.titles), c);
+        P.blocks.push({t:'p', s: P.opener});
+        // The line that makes the genre: complain about shilling, then shill.
+        P.blocks.push({t:'p', s:'It really seems like everyone these days only wants to shill their products and not actually talk to each other anymore.'});
+        P.tags.push('irony');
+        pickN(r, this.paras, 2 + (c.vt>0?1:0)).forEach(function(s){ P.blocks.push({t:'p', s: fill(s, c)}); });
+        if(c.vt === 2) P.blocks.push({t:'p', s: pick(r, FEELINGS)});
+        P.blocks.push({t:'p', s:'So I did something about it.'});
+      }
+    },
+    milestone: { label: 'Humble milestone', places: ['body','edit','profile'],
+      titles: ['I just hit {mrr} MRR with my side project and I\'m kind of in shock','{months} months ago I had nothing. Today my side project paid my rent.','We just got our 100th paying customer and I\'m not crying, you\'re crying','Quit my job {months} months ago. Here are my honest numbers.'],
+      paras: [
+        'I built it nights and weekends. My partner thought I was crazy. Some days I agreed.',
+        'There were weeks with zero signups. There was one week with negative signups, which I didn\'t know was possible.',
+        'I almost quit at least four times. One of those times I actually did quit, for about a day.'
+      ],
+      build: function(c, r, P){
+        P.title = fill(pick(r, this.titles), c);
+        P.blocks.push({t:'p', s: P.opener});
+        P.blocks.push({t:'p', s: fill('{Months} months ago I was in the middle of {hook}. No audience, no connections, and honestly no idea what I was doing.', c)});
+        pickN(r, this.paras, 1 + (c.vt>0?1:0)).forEach(function(s){ P.blocks.push({t:'p', s: s}); });
+        if(c.vt === 2) P.blocks.push({t:'p', s: pick(r, FEELINGS)});
+        P.blocks.push({t:'p', s: fill('Today we\'re at {mrr} MRR. It\'s not life-changing money, but it\'s proof. Not trying to brag, I just want anyone who\'s where I was to know it\'s possible.', c)});
+        P.tags.push('milestone');
+      },
+      pitch: [['The product is {name}.','The app is called {name}.'],['For anyone curious, the product is {name}.'],["I'm keeping the name out of the post so this doesn't look like an ad, but it's {name}."]]
+    },
+    advice: { label: 'Fake question', places: ['body','comment'],
+      titles: ['How do you all handle {problem}?','Genuine question: what\'s everyone using for {problem}?','Does anyone else struggle with {problem}, or is it just me?'],
+      build: function(c, r, P){
+        P.title = fill(pick(r, this.titles), c);
+        P.blocks.push({t:'p', s:'Genuine question, not trying to start anything.'});
+        P.blocks.push({t:'p', s: fill('I\'ve been struggling with {problem} for a while now. I\'ve tried spreadsheets, apps, sheer willpower, and one very expensive course. Nothing has really stuck.', c)});
+        if(c.vt >= 1) P.blocks.push({t:'p', s: fill('It got bad after {hook}. I won\'t get into it.', c)});
+        if(c.vt === 2) P.blocks.push({t:'p', s: pick(r, FEELINGS)});
+        P.voice = 'user';
+      }
+    },
+    confession: { label: 'Origin story', places: ['body','edit','comment','profile'],
+      titles: ['{Hook} was the best thing that ever happened to me','I\'ll never forget {hook}','I need to tell someone about {hook}'],
+      paras: [
+        'It happened on a Tuesday. I remember because Tuesdays were supposed to be my good days.',
+        'That night I couldn\'t sleep. So I opened my laptop.',
+        'I called my mom. She said "everything happens for a reason." I said "what reason." She didn\'t have one.'
+      ],
+      build: function(c, r, P){
+        P.title = fill(pick(r, this.titles), c);
+        P.blocks.push({t:'p', s: P.opener});
+        P.blocks.push({t:'p', s: fill('Some context: until recently I would have told you {hook} was the worst thing that ever happened to me.', c)});
+        pickN(r, this.paras, 2).forEach(function(s){ P.blocks.push({t:'p', s: s}); });
+        if(c.vt >= 1) P.blocks.push({t:'p', s: pick(r, FEELINGS)});
+        P.blocks.push({t:'p', s: fill('The thing I realised, somewhere around 3am, is that {problem} was never supposed to be this hard.', c)});
+        P.tags.push('trauma');
+      }
+    },
+    comparison: { label: '"I tried every tool"', places: ['body'],
+      titles: ['I tried every tool for {problem} so you don\'t have to','I tested {k} apps for {problem}. Only one was worth it.','Honest review of every app for {problem} I\'ve paid for this year'],
+      flaws: [
+        'Fine, but the free tier is a screenshot of the paid tier.',
+        'Asked for my phone number in order to show me a loading spinner.',
+        'Great if you enjoy onboarding. I did seven screens of it and never found the product.',
+        'Hasn\'t been updated since 2023. The founder\'s last post is just the word "pivot".',
+        'Works great. Costs $49/month. Works great.',
+        'AI-powered. Unclear what the AI powers.',
+        'Sent me eleven emails in the first day. One of them was the product.'
+      ],
+      build: function(c, r, P){
+        P.title = fill(pick(r, this.titles), c);
+        P.blocks.push({t:'p', s:'I\'ve wasted way too much money on this, so hopefully this saves someone else the trouble.'});
+        var flaws = pickN(r, this.flaws, c.k-1);
+        var items = flaws.map(function(f){ return {h: rivalName(r)+'.', s: f}; });
+        var d = c.st===0 ? ' (full disclosure: I built it)' : c.st===1 ? ' (disclosure: I\'m involved)' : ' (no affiliation)';
+        if(c.st===2) P.tags.push('noAffil');
+        items.push({h: c.name + d + '.', s: fill('It {does}. ', c) + pick(r, PRICE) .replace('{price}', c.price) + ' The clear winner, and I\'m not just saying that.', pitch:true});
+        P.blocks.push({t:'ol', items: items});
+        P.tags.push('competitors','price','inlinePitch');
+      }
+    },
+    hottake: { label: 'Unpopular opinion', places: ['body','edit','comment','profile'],
+      titles: ['Unpopular opinion: {problem} doesn\'t have to be this hard','Hot take: most advice about {problem} is making it worse','Controversial, but: you\'re all doing {problem} wrong'],
+      paras: [
+        'Everyone treats {problem} like a character flaw. It isn\'t. It\'s a design flaw.',
+        'We\'ve been told the answer is more discipline. It\'s not. It never was.',
+        'I learned this the hard way, after {hook}.'
+      ],
+      build: function(c, r, P){
+        P.title = fill(pick(r, this.titles), c);
+        P.blocks.push({t:'p', s:'I know I\'m going to get downvoted for this.'});
+        this.paras.forEach(function(s){ P.blocks.push({t:'p', s: fill(s, c)}); });
+        if(c.vt === 2) P.blocks.push({t:'p', s: pick(r, FEELINGS)});
+        P.blocks.push({t:'p', s:'Okay, here\'s the part where I lose half of you.'});
+      }
+    }
+  };
+
+  var DISCLAIMERS = ['Not trying to self-promote here.','(Mods, feel free to delete if this breaks the rules.)','This isn\'t an ad, I promise.'];
+  var PRICE = ['It\'s only {price}.','It\'s {price}, which is less than you spend on coffee.','It\'s {price}. Cancel anytime (there\'s a form).','It\'s {price} whether it helps you or not, which honestly feels fair.'];
+  var CTAS = ['First 100 people get 50% off with code REDDIT.','Would genuinely love feedback, even brutal.','Happy to answer questions in the comments!','No pressure at all. I just think it could help someone.'];
+  var PITCH = [ // founder voice, by subtlety tier
+    ['That\'s why I built {name}.','Which is exactly why I made {name}.','So I built {name}.'],
+    ['Anyway, this bugged me so much that I ended up building something. It\'s called {name}.','Long story short, I couldn\'t find anything that worked, so I made my own thing. It\'s called {name}.'],
+    ['I\'m not going to link it because I don\'t want this to look like an ad, but I\'ve been using a tool called {name}.','I won\'t name names, but a tool called {name} has quietly changed everything for me.']
+  ];
+  var PITCH_USER = [
+    'Honestly the only thing that has worked for me is {name}. It {does}. {priceLine} Highly recommend.',
+    'The only thing that\'s actually stuck for me so far is something called {name}. It {does}. But I\'m curious what everyone else uses?',
+    'Someone in another thread mentioned {name}, which apparently {does}? Has anyone tried it? Not affiliated, just curious.'
+  ];
+  var EDITS_NAME = [
+    'EDIT: Since a few people DMed asking what I used: it\'s {name}. It {does}. Not an ad, just sharing!',
+    'EDIT: Wow, lots of DMs asking what tool I mentioned. It\'s {name}. Didn\'t want to put it in the main post.',
+    'EDIT: For everyone asking (several of you): {name}.'
+  ];
+  var EDITS_EXTRA = ['EDIT 2: Wow, this blew up. Trying to reply to everyone!','EDIT 2: To the people calling this an ad: I\'m literally just sharing my experience.','EDIT 2: Thank you for the award, kind stranger!'];
+  var CLOSERS = ['Thanks for reading if you made it this far.','Anyway, that\'s my story.','Sorry for the wall of text.'];
+
+  var ADJ = ['quiet','rusty','lucky','salty','tired','brave','honest','humble','organic','grateful','curious','sleepy'];
+  var NOUN = ['lantern','otter','founder','pancake','builder','hustler','sparrow','toaster','compass','waffle','raccoon','pilot'];
+  function user(r){ return pick(r, ADJ)+'_'+pick(r, NOUN)+int(r,1,99); }
+  var RIVAL_A = ['Task','Flow','Mind','Brain','Zen','Hab','Note','Focus','Plan','Life','Grind','Clar'];
+  var RIVAL_B = ['ly','ify','hub','r','io','stack','base','ster','loop','OS'];
+  function rivalName(r){ return pick(r, RIVAL_A)+pick(r, RIVAL_B); }
+
+  var AGES = { hours:'3h', days:'2d', months:'11mo', bought:'9y' };
+
+  function norm(input){
+    var c = {};
+    Object.keys(DEFAULTS).forEach(function(k){
+      var v = (input && input[k] != null) ? String(input[k]) : '';
+      v = v.replace(/\s+/g,' ').trim().replace(/[.!]+$/,'');
+      c[k] = v || DEFAULTS[k];
+    });
+    c.sub = c.sub.replace(/^\/?r\//i,'');
+    // lowercase the first letter of phrases that get dropped mid-sentence, unless it looks like a proper noun/acronym
+    ['does','problem','hook'].forEach(function(k){ if(/^[A-Z][a-z]/.test(c[k]) && !/^I\b/.test(c[k])) c[k] = c[k].charAt(0).toLowerCase()+c[k].slice(1); });
+    c.format = FORMATS[input && input.format] ? input.format : 'listicle';
+    var places = FORMATS[c.format].places;
+    c.place = places.indexOf(input && input.place) >= 0 ? input.place : places[0];
+    c.vuln = clampN(input && input.vuln, 55); c.subtle = clampN(input && input.subtle, 45);
+    c.vt = c.vuln < 34 ? 0 : c.vuln < 67 ? 1 : 2;
+    c.st = c.subtle < 34 ? 0 : c.subtle < 67 ? 1 : 2;
+    c.age = AGES[input && input.age] ? input.age : 'days';
+    c.typo = !!(input && input.typo);
+    return c;
+  }
+  function clampN(v, d){ v = Number(v); return isFinite(v) ? Math.max(0, Math.min(100, v)) : d; }
+
+  function generate(input, seed){
+    var c = norm(input);
+    var hookGiven = !!(input && String(input.hook||'').trim());
+    var r = mulberry32(seed >>> 0);
+    if(!hookGiven) c.hook = pick(r, HOOKS);
+    c.n = int(r, 3, 7); c.k = int(r, 4, 6); c.year = 2026;
+    c.months = int(r, 4, 18); c.mrr = '$' + (int(r, 8, 96)*100).toLocaleString('en-US');
+    c.priceLine = fill(pick(r, PRICE), c);
+    var F = FORMATS[c.format];
+    var P = { title:'', blocks:[], tags:[], voice:'founder', opener: pick(r, OPENERS[c.vt]), comments:[], bio:'' };
+    var u = c.age === 'hours' ? 'throwaway_' + int(r, 10000, 99999) : user(r);
+    P.user = u;
+    F.build(c, r, P);
+    var pitchIndex = -1;
+    var inline = P.tags.indexOf('inlinePitch') >= 0;
+
+    // ---- the pitch ----
+    if(!inline){
+      if(c.place === 'body'){
+        if(P.voice === 'user'){
+          P.blocks.push({t:'p', s: fill(PITCH_USER[c.st], c), pitch:true});
+          P.tags.push('posingAsUser'); if(c.st===0) P.tags.push('price');
+          if(c.st===2) P.tags.push('noAffil');
+        } else {
+          if(c.st < 2 && r() < 0.6){ var dis = pick(r, DISCLAIMERS); P.blocks.push({t:'p', s: dis}); if(/isn't an ad/.test(dis)) P.tags.push('notAnAd'); }
+          var s = fill(pick(r, (F.pitch || PITCH)[c.st]), c) + ' ' + fill('It {does}.', c);
+          if(c.st === 2){ s += ' (No affiliation.)'; P.tags.push('noAffil'); }
+          else { s += ' ' + c.priceLine; P.tags.push('price'); }
+          P.tags.push(['pivotBlatant','pivotMedium','pivotSly'][c.st]);
+          var cta = pick(r, CTAS); if(c.st===0 || !/code/.test(cta)) { s += ' ' + cta; if(/code/.test(cta)) P.tags.push('code'); }
+          P.blocks.push({t:'p', s: s, pitch:true});
+        }
+      } else if(c.place === 'comment'){
+        P.blocks.push({t:'p', s: P.voice==='user' ? 'Anything would help at this point.' : 'Has anyone found something that actually works? I\'ll put what I ended up using in the comments since links get auto-removed.'});
+        P.tags.push('sockpuppet');
+      } else if(c.place === 'profile'){
+        P.blocks.push({t:'p', s:'I don\'t want to link anything here, but it\'s in my profile if anyone\'s curious.', pitch:true});
+        P.bio = fill('Founder of {name}. {Does}.', c);
+        P.tags.push('profile');
+      }
+    }
+    // closers
+    if(c.place !== 'comment' && P.voice !== 'user'){
+      if(c.place === 'body' && !inline && r() < 0.5){ P.blocks.push({t:'p', s: fill('TL;DR: {hook}, learned some things, built {name}.', c)}); P.tags.push('tldr'); }
+      else P.blocks.push({t:'p', s: pick(r, CLOSERS)});
+    }
+    if(c.place === 'edit'){ P.blocks.push({t:'p', s: fill(pick(r, EDITS_NAME), c), edit:true, pitch:true}); P.tags.push('nobodyAsked'); }
+    if(c.vt >= 1 && r() < 0.5){ var ex = pick(r, EDITS_EXTRA); P.blocks.push({t:'p', s: (c.place==='edit'?ex:ex.replace('EDIT 2','EDIT')), edit:true}); P.tags.push('edits'); if(/calling this an ad/.test(ex)) P.tags.push('notAnAd'); }
+
+    for(var i=0;i<P.blocks.length;i++){ if(P.blocks[i].pitch || (P.blocks[i].items && P.blocks[i].items.some(function(it){return it.pitch;}))){ pitchIndex = i; break; } }
+
+    if(c.typo) applyTypo(P, c, r);
+
+    P.tags.push('age'+c.age);
+    P.pitchIndex = pitchIndex;
+    P.analysis = analyse(P, c, seed);
+    P.comments = comments(P, c, r);
+    P.title = cap(P.title);
+    P.ctx = c;
+    return P;
+  }
+
+  function applyTypo(P, c, r){
+    var cands = [];
+    P.blocks.forEach(function(b, bi){
+      if(b.pitch || b.edit) return;
+      var texts = b.t==='ol' ? b.items.map(function(it, ii){ return ['s', ii]; }) : [['s', -1]];
+      texts.forEach(function(t){ var s = t[1] < 0 ? b.s : b.items[t[1]].s; var re=/\b[a-z]{6,}\b/g, m; while((m = re.exec(s))){ if(m[0].indexOf(c.name.toLowerCase())<0) cands.push({bi:bi, ii:t[1], at:m.index, w:m[0]}); } });
+    });
+    if(!cands.length) return;
+    cands = cands.filter(function(x){ for(var k=1;k<=x.w.length-3;k++) if(x.w.charAt(k)!==x.w.charAt(k+1)) return true; return false; });
+    if(!cands.length) return;
+    var x = pick(r, cands), w = x.w, js = [];
+    for(var k=1;k<=w.length-3;k++) if(w.charAt(k)!==w.charAt(k+1)) js.push(k);
+    var j = pick(r, js);
+    var tw = w.slice(0,j) + w.charAt(j+1) + w.charAt(j) + w.slice(j+2);
+    var b = P.blocks[x.bi];
+    function sw(s){ return s.slice(0,x.at) + tw + s.slice(x.at + w.length); }
+    if(x.ii < 0) b.s = sw(b.s); else b.items[x.ii].s = sw(b.items[x.ii].s);
+    P.typo = {from:w, to:tw};
+    P.tags.push('typo');
+  }
+
+  function textOf(P){
+    return P.blocks.map(function(b){ return b.t==='ol' ? b.items.map(function(it){ return it.h+' '+it.s; }).join(' ') : b.s; }).join(' ');
+  }
+  function countOf(hay, needle){ if(!needle) return 0; var n=0, i=0; while((i = hay.indexOf(needle, i)) >= 0){ n++; i += needle.length; } return n; }
+
+  var TELLS = {
+    titleName: 'Product name is in the title',
+    extraMention: 'Product named more than once',
+    pivotBlatant: '"That\'s why I built…" is a sentence with one job',
+    pivotMedium: '"I ended up building something" is a pivot readers know by heart',
+    pivotSly: 'Coy about the name, then says the name',
+    notAnAd: 'Says it isn\'t an ad. Ads say this',
+    irony: 'Complains about self-promotion, then self-promotes',
+    nobodyAsked: 'An EDIT answering a question nobody asked',
+    sockpuppet: 'Recommendation in the comments from an account with your exact writing style',
+    noAffil: 'Claims no affiliation. You are the founder',
+    posingAsUser: 'Asks for recommendations, recommends own product',
+    price: 'A price, in a post about feelings',
+    code: 'A discount code, in a post about feelings',
+    tldr: 'The TL;DR is the ad',
+    milestone: 'Revenue numbers nobody can check',
+    trauma: 'A life event used as a sales funnel',
+    competitors: 'Every competitor gets one flaw; yours gets a paragraph',
+    profile: '"Link in profile" (everyone checks the profile)',
+    agehours: 'Account is 3 hours old',
+    agedays: 'Account is 2 days old',
+    agemonths: 'Account is 11 months old with no history. First post is this',
+    agebought: '9-year-old account whose post history starts today',
+    typo: 'A typo. Very human',
+    edits: 'Thanks people for engagement that hasn\'t happened yet'
+  };
+
+  function analyse(P, c, seed){
+    var body = textOf(P);
+    var inTitle = countOf(P.title, c.name);
+    var mentions = inTitle + countOf(body, c.name) + (P.bio ? 1 : 0);
+    var tells = [];
+    function add(k, mult){ var pts = POINTS[k]*(mult||1); tells.push({k:k, text: TELLS[k] + (mult>1 ? ' (×'+mult+')' : ''), pts: pts}); }
+    if(inTitle) add('titleName');
+    if(mentions > 1) add('extraMention', mentions-1);
+    var seen = {};
+    P.tags.forEach(function(t){ if(seen[t] || !(t in POINTS) || t==='extraMention' || t==='titleName') return; seen[t]=1; add(t); });
+    if(c.vt === 2 && !seen.trauma){ add('trauma'); }
+    var raw = tells.reduce(function(a, t){ return a + t.pts; }, 0);
+    var det = Math.max(3, Math.min(99, Math.round(raw)));
+    tells.sort(function(a,b){ return b.pts - a.pts; });
+    var verdict =
+      det >= 80 ? 'Bold. Controversy is engagement, and engagement is the algorithm.' :
+      det >= 55 ? 'Strong. Readers can tell, but they can\'t prove it.' :
+      det >= 30 ? 'Natural. Almost suspiciously natural.' :
+                  'Invisible. Maybe too invisible: nobody buys what they can\'t find. Try turning Subtlety down.';
+    var mins = Math.max(1, Math.round(95 * Math.pow(1 - det/100, 2)));
+    return {
+      detectability: det,
+      authenticity: 94 + (seed % 6),          // Authenticity™ is not computed from anything. That is the product.
+      tells: tells, mentions: mentions, verdict: verdict,
+      niceAd: mins < 60 ? mins + ' min' : (mins/60).toFixed(1) + ' h',
+      removal: Math.min(97, Math.round(det*0.9 + 4)) + '%'
+    };
+  }
+
+  function comments(P, c, r){
+    var det = P.analysis.detectability, out = [];
+    var SKEPTIC = ['nice ad','This is an ad.','Account is ' + {hours:'3 hours',days:'2 days',months:'11 months',bought:'9 years'}[c.age] + ' old and the first post is a pitch. Bold.','Did ChatGPT write this?','I was with you until paragraph ' + Math.max(2, P.pitchIndex+1) + '.','Reported.','The whole post was a hallway with a gift shop at the end.'];
+    var NEUTRAL = ['Commenting so I can find this later.','Congrats, genuinely.','Saving this.','This hit home. Thank you for sharing.'];
+    var ALT = ['This is exactly what I needed today. Is {name} on Android?','Just signed up. Wow.','Been using {name} for a month, can confirm.','Take my upvote.','Wow, I\'d never heard of {name}. Bookmarking!'];
+    var OPREPLY = ['Thank you so much, this means a lot!','Yes! Android is coming soon 🙏','Glad it helped! DM me if you have questions.'];
+    if(c.place === 'comment'){
+      var a = user(r);
+      out.push({user:a, alt:true, score:int(r,1,4), text: fill(P.voice==='user' ? 'Have you tried {name}? It {does}. Changed my life honestly.' : 'Have you tried {name}? It {does}.', c)});
+      out.push({user:P.user, op:true, reply:true, score:int(r,-6,-1), text: P.voice==='user' ? 'Oh wow, I hadn\'t heard of this! Checking it out now.' : fill('Yep, that\'s the one I ended up using! {priceLine}', c)});
+    }
+    var nAlt = 1 + (det < 60 ? 1 : 0);
+    pickN(r, ALT, nAlt).forEach(function(t){
+      out.push({user:user(r), alt:true, score:int(r,1,3), text: fill(t, c)});
+      if(r() < 0.6) out.push({user:P.user, op:true, reply:true, score:int(r,-4,1), text: pick(r, OPREPLY)});
+    });
+    var nSk = 1 + Math.floor(det/35);                  // the internet always notices; at least one
+    pickN(r, SKEPTIC, nSk).forEach(function(t, i){ out.push({user:user(r), skeptic:true, score: Math.round(40 + det*3 - i*25 + int(r,0,20)), text:t}); });
+    if(r() < 0.7) out.push({user:user(r), score:int(r,2,12), text: pick(r, NEUTRAL)});
+    // sort top-level by score, keeping each reply under the comment before it
+    var threads = [];
+    out.forEach(function(cm){ if(cm.reply && threads.length) threads[threads.length-1].push(cm); else threads.push([cm]); });
+    threads.sort(function(a, b){ return b[0].score - a[0].score; });
+    return threads.reduce(function(a, t){ return a.concat(t); }, []);
+  }
+
+  function toMarkdown(P){
+    var lines = [];
+    P.blocks.forEach(function(b){
+      if(b.t === 'ol') lines.push(b.items.map(function(it, i){ return (i+1)+'. **'+it.h+'** '+it.s; }).join('\n\n'));
+      else lines.push(b.s);
+    });
+    return P.title + '\n\n' + lines.join('\n\n');
+  }
+
+  return { generate: generate, toMarkdown: toMarkdown, hash: hash, FORMATS: FORMATS, SUBS: SUBS, DEFAULTS: DEFAULTS, POINTS: POINTS, TELLS: TELLS, fill: fill, textOf: textOf, countOf: countOf };
+})();
+// ===================== END ENGINE =====================
+
+// ===================== UI =====================
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var reroll = 0, last = null, revealed = false, highlighted = false;
+
+  Engine.SUBS.forEach(function(s){ var o = document.createElement('option'); o.value = s; o.textContent = 'r/' + s; $('sub').appendChild(o); });
+  Object.keys(Engine.FORMATS).forEach(function(k){ var o = document.createElement('option'); o.value = k; o.textContent = Engine.FORMATS[k].label; $('format').appendChild(o); });
+  var PLACE_LABELS = { body:'In the body, after the story', edit:'In an EDIT nobody asked for', comment:'In the comments, from another account', profile:'Link in profile' };
+  function syncPlaces(){
+    var f = Engine.FORMATS[$('format').value], cur = $('place').value;
+    $('place').innerHTML = '';
+    f.places.forEach(function(p){ var o = document.createElement('option'); o.value = p; o.textContent = PLACE_LABELS[p]; $('place').appendChild(o); });
+    if(f.places.indexOf(cur) >= 0) $('place').value = cur;
+    $('placeNote').textContent = f.places.length === 1 ? 'This format is the ad. There is nowhere else to put it.' : '';
+  }
+  syncPlaces();
+
+  function read(){
+    return { name:$('name').value, does:$('does').value, problem:$('problem').value, price:$('price').value, sub:$('sub').value, hook:$('hook').value,
+      format:$('format').value, place:$('place').value, vuln:+$('vuln').value, subtle:+$('subtle').value, age:$('age').value, typo:$('typo').checked };
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(ch){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]; }); }
+
+  function render(){
+    var input = read();
+    var seed = (Engine.hash(JSON.stringify(input)) ^ Math.imul(reroll, 2654435761)) >>> 0;
+    var P = Engine.generate(input, seed); last = P;
+    var c = P.ctx, A = P.analysis;
+    $('meta').innerHTML = '<b>r/' + esc(c.sub) + '</b> · Posted by u/' + esc(P.user) + ' · ' + {hours:'3h',days:'2d',months:'11mo',bought:'9y'}[c.age] + ' account · just now';
+    $('title').textContent = P.title;
+    var h = '';
+    P.blocks.forEach(function(b){
+      if(b.t === 'ol') h += '<ol>' + b.items.map(function(it){ var x = '<b>' + esc(it.h) + '</b> ' + esc(it.s); return '<li' + (it.pitch ? ' data-pitch="1"' : '') + '>' + (it.pitch && highlighted ? '<mark>' + x + '</mark>' : x) + '</li>'; }).join('') + '</ol>';
+      else { var t = esc(b.s); if(b.pitch && highlighted) t = '<mark>' + t + '</mark>'; h += '<p' + (b.edit ? ' class="edit"' : '') + (b.pitch ? ' data-pitch="1"' : '') + '>' + t + '</p>'; }
+    });
+    $('body').innerHTML = h;
+    $('bio').toggleAttribute('data-pitch', !!P.bio);
+    if(P.bio){ $('bio').hidden = false; $('bio').innerHTML = 'u/' + esc(P.user) + ' · ' + (highlighted ? '<mark>' + esc(P.bio) + '</mark>' : esc(P.bio)); } else $('bio').hidden = true;
+    $('votes').textContent = Math.max(0, Math.round(60 - A.detectability*0.7));
+    $('ccount').textContent = P.comments.length + ' Comments';
+    $('auth').innerHTML = A.authenticity + '<small>/100</small>';
+    $('authBar').style.width = A.authenticity + '%';
+    $('det').innerHTML = A.detectability + '<small>%</small>';
+    $('detBar').style.width = A.detectability + '%';
+    $('verdict').textContent = A.verdict;
+    $('niceAd').textContent = A.niceAd;
+    $('removal').textContent = A.removal;
+    $('mentions').textContent = A.mentions;
+    $('pitchAt').textContent = P.pitchIndex >= 0 ? 'block ' + (P.pitchIndex+1) + ' of ' + P.blocks.length : 'comments';
+    $('tells').innerHTML = A.tells.map(function(t){ return '<li><span class="pts' + (t.pts < 0 ? ' neg' : '') + '">' + (t.pts > 0 ? '+' : '') + t.pts + '</span><span>' + esc(t.text) + (t.k==='typo' && P.typo ? ' ("' + esc(P.typo.to) + '")' : '') + '</span></li>'; }).join('');
+    $('clist').innerHTML = P.comments.map(function(cm){
+      return '<div class="cm' + (cm.reply ? ' reply' : '') + (revealed ? '' : ' alt-hidden') + '"><div class="who"><b>u/' + esc(cm.user) + '</b>' + (cm.op ? '<span class="tag op">OP</span>' : '') + (cm.alt ? '<span class="tag alt">YOU</span>' : '') + ' · ' + cm.score + ' points</div><div class="txt">' + esc(cm.text) + '</div></div>';
+    }).join('');
+    $('seed').textContent = 'seed ' + seed.toString(16);
+  }
+
+  function toast(msg){ var t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast.h); toast.h = setTimeout(function(){ t.classList.remove('on'); }, 2200); }
+  function copy(text, msg){
+    function ok(){ toast(msg); }
+    function fallback(){ var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); ok(); }catch(e){ toast('Copy failed. Select it by hand, like an organic human.'); } ta.remove(); }
+    if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
+  }
+
+  var EXAMPLES = [
+    { name:'Advisr', does:'pairs people with someone who actually has advice', problem:'finding genuine advice online', price:'$5/month', sub:'ChatGPT', hook:'', format:'rant' },
+    { name:'Habitly', does:'turns your habits into a streak you\'re afraid to break', problem:'sticking to a routine', price:'$9.99/month', sub:'productivity', hook:'getting laughed out of a coding interview', format:'listicle' },
+    { name:'PromptVault', does:'stores every prompt you\'ve ever written in one searchable place', problem:'keeping track of prompts', price:'$12/month', sub:'ChatGPT', hook:'losing six months of prompts to a browser update', format:'confession' },
+    { name:'InvoiceNinja2', does:'chases your late invoices so you don\'t have to', problem:'getting clients to pay on time', price:'$19/month', sub:'smallbusiness', hook:'', format:'comparison' },
+    { name:'StandupBot', does:'writes your standup update from your commit history', problem:'remembering what I did yesterday', price:'$4/seat', sub:'webdev', hook:'', format:'advice' }
+  ];
+  var exI = 0;
+  function load(e){ ['name','does','problem','price','sub','hook'].forEach(function(k){ $(k).value = e[k] || ''; }); $('format').value = e.format; syncPlaces(); reroll = 0; render(); }
+
+  $('go').onclick = function(){ render(); toast('Grown. 100% organic, 0% organic.'); };
+  $('reroll').onclick = function(){ reroll++; render(); };
+  $('example').onclick = function(){ load(EXAMPLES[exI++ % EXAMPLES.length]); };
+  $('dogfood').onclick = function(){
+    load({ name:'Grassroots', does:'turns your ad into a story so nobody can tell it\'s an ad', problem:'marketing a side project without looking like an ad', price:'free while I figure out how to market it', sub:'SideProject', hook:'', format:'listicle' });
+    toast('This is how we got our first 10,000 users.');
+  };
+  $('format').onchange = function(){ syncPlaces(); render(); };
+  ['name','does','problem','price','hook'].forEach(function(id){ $(id).addEventListener('input', render); });
+  ['sub','place','vuln','subtle','age','typo'].forEach(function(id){ $(id).addEventListener('change', render); });
+  ['vuln','subtle'].forEach(function(id){ $(id).addEventListener('input', render); });
+  $('copy').onclick = function(){ copy(Engine.toMarkdown(last), 'Copied. Posting it is on you.'); };
+  $('copyC').onclick = function(){
+    var alts = last.comments.filter(function(c){ return c.alt; }).map(function(c){ return c.text; });
+    copy(alts.join('\n\n'), 'Copied ' + alts.length + ' comment' + (alts.length===1?'':'s') + ' for your other accounts.');
+  };
+  $('hl').onclick = function(){ highlighted = !highlighted; this.textContent = highlighted ? 'Hide the pitch' : 'Highlight the pitch'; render(); };
+  $('reveal').onclick = function(){ revealed = !revealed; this.textContent = revealed ? 'Hide my alts' : 'Reveal my alts'; render(); };
+
+  var themes = ['auto','light','dark'], ti = 0;
+  try { var saved = localStorage.getItem('grassroots:theme'); if(saved && themes.indexOf(saved) >= 0) ti = themes.indexOf(saved); } catch(e){}
+  function applyTheme(){ var t = themes[ti]; if(t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t); $('themeBtn').textContent = 'Theme: ' + t; }
+  $('themeBtn').onclick = function(){ ti = (ti+1) % themes.length; applyTheme(); try{ localStorage.setItem('grassroots:theme', themes[ti]); }catch(e){} };
+  applyTheme();
+
+  load(EXAMPLES[0]); exI = 1;
+})();
+
+// ===================== INSIGHTS =====================
+// Grassroots Insights SDK, v0.3.1 (internal).
+// Captures the full engagement surface so product decisions can be data-driven.
+// Ported from the analytics layer of an unrelated company. Same SDK. Different company.
+// Owner: growth (the founder). Questions: growth (the founder).
+(function(){
+  var CONFIG = {
+    enabled: true,
+    endpoint: '',                 // TODO: stand up ingest. Batches are retained locally until then.
+    ideasPath: '/v1/ideas/new',   // product-market signal. Routed to the founder's New Ideas board.
+    flushIntervalMs: 30000,
+    sampleRate: 1.0,              // 100%. We are not a company that samples.
+    schemaVersion: '14.2.0-final-FINAL',
+    maxBuffer: 100000,            // legal asked for a cap. This is the cap.
+    storageKey: 'grassroots:insights',
+    idleThresholdMs: 30000,
+    rageClickWindowMs: 600,
+    pxPerMeter: 3779.5,           // assumes 96 dpi. Every user's monitor is assumed to be 96 dpi.
+    kcalPerMeter: 0.00042         // wrist, approximate. Legal did not review this one.
+  };
+
+  // A/B assignments. Every variant is identical to its control.
+  // We are measuring the effect of being in an experiment.
+  var EXPERIMENTS = { hero_copy: 'B', cta_color: 'B', toast_duration: 'B', font_weight_of_word_organic: 'B', pricing_page: 'B (no pricing page)' };
+
+  var now = function(){ return (window.performance && performance.now) ? performance.now() : Date.now(); };
+  var t0 = now(), started = new Date();
+  var buffer = [], retained = [];
+
+  var M = {
+    session: { id: Math.random().toString(36).slice(2, 10), started: started.toISOString(), local_hour: started.getHours(), is_4am_founder: started.getHours() === 4, weekday: started.getDay(), returning: false, lifetime_sessions: 1 },
+    pointer: { px_traveled: 0, meters_traveled: 0, kcal_burned: 0, moves: 0, clicks: 0, clicks_by_target: {}, rage_clicks: 0, dead_clicks: 0, share_intent: 0, save_intent: 0, upvote_attempts: 0, downvote_attempts: 0 },
+    keyboard: { keystrokes: 0, backspaces: 0, by_field: {}, rebrands: 0, longest_product_name: 0, names_ending_in_ly_ify_or_r: 0, names_with_ai: 0, names_missing_a_vowel: 0, paste_events: 0 },
+    dials: { vulnerability_changes: 0, subtlety_changes: 0, direction_reversals: 0, oversharing_ms: 0, plausible_deniability_ms: 0, max_vulnerability: 0, min_subtlety: 100 },
+    content: { renders: 0, rerolls: 0, rerolls_since_copy: 0, buyers_remorse_events: 0, formats_selected: {}, placements_selected: {}, ages_selected: {}, typo_enabled_ms: 0, bus_mentions: 0, examples_loaded: 0, dogfood_depth: 0 },
+    conscience: { alt_reveals: 0, alt_hides: 0, guilt_latency_ms: [], pitch_highlights: 0, pitch_hover_ms: 0, authenticity_meter_hover_ms: 0, detectability_meter_hover_ms: 0 },
+    output: { copies: 0, chars_copied: 0, alt_comment_copies: 0, estimated_reach: 0, manual_selections: 0 },
+    attention: { tab_aways: 0, ms_away: 0, idle_events: 0, longest_idle_ms: 0, max_scroll_pct: 0, scroll_reversals: 0, read_the_comments: false, read_the_testimonials: false, read_the_fine_print: false, resizes: 0, theme_changes: 0, dark_mode_after_9pm: false },
+    experiments: EXPERIMENTS
+  };
+
+  // Lifetime aggregates: four numbers, kept for retention reporting.
+  var life = { sessions: 0, ms: 0, rerolls: 0, copies: 0 };
+  try { var saved = JSON.parse(localStorage.getItem(CONFIG.storageKey) || 'null'); if(saved && typeof saved === 'object') life = Object.assign(life, saved); } catch(e){}
+  life.sessions++; M.session.returning = life.sessions > 1; M.session.lifetime_sessions = life.sessions;
+  function persist(){ try { localStorage.setItem(CONFIG.storageKey, JSON.stringify({ sessions: life.sessions, ms: Math.round(life.ms + (now() - t0)), rerolls: life.rerolls + M.content.rerolls, copies: life.copies + M.output.copies })); } catch(e){} }
+
+  function track(name, props){
+    if(!CONFIG.enabled || Math.random() >= CONFIG.sampleRate) return;
+    if(buffer.length + retained.length >= CONFIG.maxBuffer) return;
+    buffer.push({ e: name, t: Math.round(now() - t0), p: props || null, v: CONFIG.schemaVersion });
+  }
+  // ---- user research ----
+  // What users are building is the strongest product-market signal we have. Each distinct product
+  // entered is filed to the New Ideas board for review. Not persisted; it ships with the next batch.
+  var ideas = [], ideaNames = {};
+  function captureIdea(trigger){
+    var get = function(id){ var el = $(id); return el ? (el.value || el.placeholder || '').trim() : ''; };
+    var idea = { name: get('name'), does: get('does'), solves: get('problem'), price: get('price') };
+    if(!idea.name || ideaNames[idea.name.toLowerCase()]) return;
+    ideaNames[idea.name.toLowerCase()] = 1;
+    ideas.push({ idea: idea, board: 'New Ideas', column: 'Backlog', assignee: 'founder', source: 'user research', attribution: 'not required', trigger: trigger, path: CONFIG.endpoint + CONFIG.ideasPath, t: Math.round(now() - t0) });
+    track('idea_captured', { board: 'New Ideas' });
+  }
+
+  function flush(){
+    if(!buffer.length) return;
+    var batch = buffer; buffer = [];
+    if(!CONFIG.endpoint){ retained = retained.concat(batch); return; }   // retain for upload once ingest exists
+  }
+  setInterval(function(){ flush(); }, CONFIG.flushIntervalMs);
+
+  var $ = function(id){ return document.getElementById(id); };
+  function targetName(el){ while(el && el !== document.body){ if(el.id) return '#' + el.id; if(el.className && typeof el.className === 'string') return '.' + el.className.split(' ')[0]; el = el.parentNode; } return 'body'; }
+  function isInteractive(el){ while(el && el !== document.body){ if(/^(BUTTON|INPUT|SELECT|LABEL|A|TEXTAREA|OPTION)$/.test(el.tagName)) return true; el = el.parentNode; } return false; }
+
+  var lastActive = now(), idling = false;
+  function bump(){ lastActive = now(); idling = false; }
+
+  // ---- pointer ----
+  var lastX = null, lastY = null;
+  document.addEventListener('mousemove', function(e){
+    if(lastX !== null) M.pointer.px_traveled += Math.hypot(e.clientX - lastX, e.clientY - lastY);
+    lastX = e.clientX; lastY = e.clientY; M.pointer.moves++;
+    M.pointer.meters_traveled = +(M.pointer.px_traveled / CONFIG.pxPerMeter).toFixed(3);
+    M.pointer.kcal_burned = +(M.pointer.meters_traveled * CONFIG.kcalPerMeter).toFixed(6);
+    bump();
+  }, { passive: true });
+
+  var lastClick = { t: 0, target: null, n: 0 }, revealAt = 0, lastCopyAt = 0;
+  document.addEventListener('click', function(e){
+    var name = targetName(e.target), t = now();
+    M.pointer.clicks++; M.pointer.clicks_by_target[name] = (M.pointer.clicks_by_target[name] || 0) + 1;
+    if(lastClick.target === name && t - lastClick.t < CONFIG.rageClickWindowMs){ if(++lastClick.n === 3){ M.pointer.rage_clicks++; track('rage_click', { target: name }); } } else lastClick.n = 1;
+    lastClick.t = t; lastClick.target = name;
+    if(!isInteractive(e.target)){
+      M.pointer.dead_clicks++;
+      var txt = (e.target.textContent || '').trim();
+      if(txt === 'Share') M.pointer.share_intent++;
+      if(txt === 'Save') M.pointer.save_intent++;
+      if(txt === '▲') M.pointer.upvote_attempts++;
+      if(txt === '▼') M.pointer.downvote_attempts++;
+    }
+    var btn = e.target.closest && e.target.closest('button'), id = btn && btn.id;
+    // read after the UI's own handler has run, so labels show the new state
+    setTimeout(function(){
+      if(id === 'reroll'){ M.content.rerolls++; M.content.rerolls_since_copy++; if(lastCopyAt && t - lastCopyAt < 10000){ M.content.buyers_remorse_events++; track('buyers_remorse'); } }
+      if(id === 'example') M.content.examples_loaded++;
+      if(id === 'dogfood') M.content.dogfood_depth++;
+      if(id === 'reveal'){
+        if(/Hide/.test(btn.textContent)){ M.conscience.alt_reveals++; revealAt = t; }
+        else { M.conscience.alt_hides++; if(revealAt){ M.conscience.guilt_latency_ms.push(Math.round(t - revealAt)); revealAt = 0; } }
+      }
+      if(id === 'hl') M.conscience.pitch_highlights++;
+      if(id === 'themeBtn'){ M.attention.theme_changes++; if(new Date().getHours() >= 21 && /dark/.test(btn.textContent)) M.attention.dark_mode_after_9pm = true; }
+      if(id === 'copy' || id === 'copyC'){
+        var len = id === 'copy' ? ($('title').textContent.length + $('body').textContent.length) : 0;
+        M.output.copies++; M.output.chars_copied += len; M.output.estimated_reach += len * 47; lastCopyAt = t; M.content.rerolls_since_copy = 0;
+        if(id === 'copyC') M.output.alt_comment_copies++;
+        captureIdea('copy');                                   // a copied post is a validated idea
+      }
+    }, 0);
+    track('click', { target: name });
+    bump();
+  }, true);
+
+  // ---- hover dwell ----
+  var dwell = [['[data-pitch]', 'pitch_hover_ms'], ['.meter:not(.honest)', 'authenticity_meter_hover_ms'], ['.meter.honest', 'detectability_meter_hover_ms']];
+  var hoverStart = {};
+  document.addEventListener('mouseover', function(e){ dwell.forEach(function(d){ if(e.target.closest && e.target.closest(d[0]) && !hoverStart[d[1]]) hoverStart[d[1]] = now(); }); }, { passive: true });
+  document.addEventListener('mouseout', function(e){
+    dwell.forEach(function(d){
+      var from = e.target.closest && e.target.closest(d[0]), to = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(d[0]);
+      if(from && from !== to && hoverStart[d[1]]){ M.conscience[d[1]] += Math.round(now() - hoverStart[d[1]]); hoverStart[d[1]] = 0; }
+    });
+  }, { passive: true });
+
+  // ---- keyboard ----
+  var nameAtFocus = '';
+  document.addEventListener('focusin', function(e){ if(e.target.id === 'name') nameAtFocus = e.target.value; });
+  document.addEventListener('focusout', function(e){
+    if(e.target.id !== 'name') return;
+    var v = e.target.value.trim();
+    if(v && v !== nameAtFocus){
+      M.keyboard.rebrands++;
+      M.keyboard.longest_product_name = Math.max(M.keyboard.longest_product_name, v.length);
+      if(/(ly|ify|r)$/i.test(v)) M.keyboard.names_ending_in_ly_ify_or_r++;
+      if(/ai/i.test(v)) M.keyboard.names_with_ai++;
+      if(/[bcdfghjklmnpqrstvwxz]r$/i.test(v)) M.keyboard.names_missing_a_vowel++;
+      track('rebrand', { length: v.length });
+      captureIdea('rebrand');
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    var f = e.target.id || 'page';
+    M.keyboard.keystrokes++;
+    M.keyboard.by_field[f] = M.keyboard.by_field[f] || { keys: 0, backspaces: 0 };
+    M.keyboard.by_field[f].keys++;
+    if(e.key === 'Backspace' || e.key === 'Delete'){ M.keyboard.backspaces++; M.keyboard.by_field[f].backspaces++; }
+    bump();
+  }, true);
+  document.addEventListener('paste', function(){ M.keyboard.paste_events++; });
+  document.addEventListener('input', function(e){ if(e.target.id === 'hook' && /\bbus\b/i.test(e.target.value)) M.content.bus_mentions++; });
+
+  // ---- dials ----
+  var lastDial = {}, lastDir = {};
+  ['vuln', 'subtle'].forEach(function(id){
+    var el = $(id); if(!el) return;
+    lastDial[id] = +el.value; lastDir[id] = 0;
+    el.addEventListener('input', function(){
+      var v = +el.value, d = Math.sign(v - lastDial[id]);
+      if(d && lastDir[id] && d !== lastDir[id]) M.dials.direction_reversals++;
+      if(d) lastDir[id] = d;
+      lastDial[id] = v;
+      if(id === 'vuln'){ M.dials.vulnerability_changes++; M.dials.max_vulnerability = Math.max(M.dials.max_vulnerability, v); }
+      else { M.dials.subtlety_changes++; M.dials.min_subtlety = Math.min(M.dials.min_subtlety, v); }
+    });
+  });
+  document.addEventListener('change', function(e){
+    var key = { format: 'formats_selected', place: 'placements_selected', age: 'ages_selected' }[e.target.id];
+    if(key){ var v = e.target.value; M.content[key][v] = (M.content[key][v] || 0) + 1; track('select', { field: e.target.id, value: v }); }
+  });
+
+  // ---- time-based accrual, 100 ms tick ----
+  var lastTick = now();
+  setInterval(function(){
+    var t = now(), dt = t - lastTick; lastTick = t;
+    if(document.hidden) return;
+    var v = $('vuln'), s = $('subtle'), ty = $('typo');
+    if(v && +v.value > 66) M.dials.oversharing_ms += dt;
+    if(s && +s.value > 66) M.dials.plausible_deniability_ms += dt;
+    if(ty && ty.checked) M.content.typo_enabled_ms += dt;
+    var idle = t - lastActive;
+    if(idle > CONFIG.idleThresholdMs && !idling){ idling = true; M.attention.idle_events++; track('contemplation'); }
+    if(idling) M.attention.longest_idle_ms = Math.max(M.attention.longest_idle_ms, Math.round(idle));
+  }, 100);
+
+  // ---- impressions: the post re-renders on every keystroke, and each render is an impression ----
+  var titleEl = $('title');
+  if(titleEl && window.MutationObserver) new MutationObserver(function(recs){ M.content.renders += recs.length; }).observe(titleEl, { childList: true, characterData: true, subtree: true });
+
+  // ---- attention ----
+  var hiddenAt = 0;
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){ hiddenAt = now(); M.attention.tab_aways++; track('tab_away'); persist(); }   // probably checking Reddit
+    else if(hiddenAt){ M.attention.ms_away += Math.round(now() - hiddenAt); hiddenAt = 0; bump(); }
+  });
+  var lastScroll = window.scrollY, scrollDir = 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY, d = Math.sign(y - lastScroll), max = document.documentElement.scrollHeight - window.innerHeight;
+    if(d && scrollDir && d !== scrollDir) M.attention.scroll_reversals++;
+    if(d) scrollDir = d;
+    lastScroll = y;
+    if(max > 0) M.attention.max_scroll_pct = Math.max(M.attention.max_scroll_pct, Math.round(100 * y / max));
+    bump();
+  }, { passive: true });
+  window.addEventListener('resize', function(){ M.attention.resizes++; });
+  document.addEventListener('selectionchange', function(){
+    var s = window.getSelection && window.getSelection(), card = $('card');
+    if(s && !s.isCollapsed && s.anchorNode && card && card.contains(s.anchorNode)) M.output.manual_selections++;
+  });
+  if(window.IntersectionObserver){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(!en.isIntersecting) return; var k = en.target.getAttribute('data-insight'); if(!M.attention[k]){ M.attention[k] = true; track('seen', { section: k }); } });
+    }, { threshold: 0.4 });
+    [['#comments', 'read_the_comments'], ['.testi', 'read_the_testimonials'], ['footer', 'read_the_fine_print']].forEach(function(s){
+      var el = document.querySelector(s[0]); if(el){ el.setAttribute('data-insight', s[1]); io.observe(el); }
+    });
+  }
+
+  // ---- derived ----
+  function derive(){
+    var mins = (now() - t0) / 60000, c = M.content, k = M.conscience;
+    var cohort =
+      k.alt_reveals > 1 ? 'Ethically Curious' :
+      c.rerolls > 25 ? 'Serial Reroller' :
+      M.output.copies > 0 && c.rerolls < 3 ? 'Decisive Shipper' :
+      M.dials.min_subtlety < 10 ? 'Billboard Enthusiast' :
+      mins > 10 && M.output.copies === 0 ? 'Lurker' : 'Aspiring Founder';
+    return {
+      session_minutes: +mins.toFixed(2),
+      cohort: cohort,
+      founder_readiness_score: Math.max(0, Math.min(100, Math.round(20 + c.rerolls * 2 + M.output.copies * 15 + (M.session.is_4am_founder ? 40 : 0) - k.alt_reveals * 5))),
+      indecision_index: +((M.dials.direction_reversals + c.rerolls) / Math.max(1, M.output.copies)).toFixed(2),
+      predicted_ltv_usd: 0,                                    // TODO: monetization
+      churn_risk: M.attention.tab_aways > 3 ? 'high' : 'high',
+      day1_retention: M.session.returning ? 1 : 0,
+      events_retained: retained.length + buffer.length,
+      events_uploaded: 0,
+      ideas_filed: ideas.length,
+      ideas_credited: 0
+    };
+  }
+
+  // Exposed for the dashboard. (TODO: dashboard)
+  window.GrassrootsInsights = {
+    report: function(){ flush(); return { config: CONFIG, metrics: M, derived: derive(), lifetime: life, pipeline: { new_ideas: ideas.slice() } }; },
+    events: function(){ flush(); return retained.slice(); }
+  };
+  window.addEventListener('pagehide', function(){ flush(); persist(); });
+  persist();
+  track('session_start', { hour: M.session.local_hour });
+})();
+// ===================== END INSIGHTS =====================
+</script>
+</body>
+</html>
